@@ -137,6 +137,9 @@ inline void Chessboard::make_reverse(int x, int y) {
 bool Chessboard::if_movable(int x, int y) const{
     int temp_x, temp_y;
     int if_movable = 0;
+    if (!this->if_empty(x, y)) {
+        return 0;
+    }
     for (int dir = 0; dir < 8; dir++) {
         temp_x = x;
         temp_y = y;

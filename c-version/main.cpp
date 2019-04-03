@@ -15,6 +15,12 @@ int main() {
     cout << a.make_move(2, 3) << endl;
     cout << a.make_move(4, 2) << endl;
     cout << a.make_move(5, 1) << endl;
+    cout << a.make_move(2, 2) << endl;
+    cout << a.make_move(2, 1) << endl;
+    cout << a.make_move(3, 5) << endl;
+    cout << a.make_move(4, 5) << endl;
+    cout << a.make_move(6, 0) << endl;
+    cout << a.make_move(3, 6) << endl;
 
     cout << "white number " << a.white_num() << endl;
     cout << "black number " << a.black_num() << endl;
