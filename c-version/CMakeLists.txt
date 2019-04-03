@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.10)
+project(c_version)
+
+set(CMAKE_CXX_STANDARD 11)
+
+set(SOURCE_FILES main.cpp chessboard.cpp chessboard.h)
+add_executable(c_version ${SOURCE_FILES})

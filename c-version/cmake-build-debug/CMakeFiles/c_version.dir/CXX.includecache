@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.cpp
+chessboard.h
+/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
+
+/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
+iostream
+-
+
+/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/main.cpp
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+
