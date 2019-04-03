@@ -13,6 +13,8 @@ chessboard.h
 /Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
 iostream
 -
+vector
+-
 
 /Users/zuhxs/Documents/GitHub/mini-alphago/c-version/main.cpp
 iostream
@@ -21,4 +23,6 @@ stdio.h
 -
 stdlib.h
 -
+chessboard.h
+/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
 

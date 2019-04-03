@@ -4,5 +4,6 @@
 CMakeFiles/c_version.dir/chessboard.cpp.o: ../chessboard.cpp
 CMakeFiles/c_version.dir/chessboard.cpp.o: ../chessboard.h
 
+CMakeFiles/c_version.dir/main.cpp.o: ../chessboard.h
 CMakeFiles/c_version.dir/main.cpp.o: ../main.cpp
 
