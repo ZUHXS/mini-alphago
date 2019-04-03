@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/c_version.dir/main.cpp.o"
   "CMakeFiles/c_version.dir/chessboard.cpp.o"
+  "CMakeFiles/c_version.dir/MCTS.cpp.o"
   "c_version.pdb"
   "c_version"
 )

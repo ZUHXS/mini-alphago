@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/MCTS.cpp" "/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/cmake-build-debug/CMakeFiles/c_version.dir/MCTS.cpp.o"
   "/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.cpp" "/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/cmake-build-debug/CMakeFiles/c_version.dir/chessboard.cpp.o"
   "/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/main.cpp" "/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/cmake-build-debug/CMakeFiles/c_version.dir/main.cpp.o"
   )

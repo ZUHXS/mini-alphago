@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/MCTS.cpp">
+			<Option target="c_version"/>
+		</Unit>
+		<Unit filename="/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/MCTS.h">
+			<Option target="c_version"/>
+		</Unit>
 		<Unit filename="/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.cpp">
 			<Option target="c_version"/>
 		</Unit>

@@ -123,6 +123,33 @@ c_version/fast:
 	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/build
 .PHONY : c_version/fast
 
+MCTS.o: MCTS.cpp.o
+
+.PHONY : MCTS.o
+
+# target to build an object file
+MCTS.cpp.o:
+	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/MCTS.cpp.o
+.PHONY : MCTS.cpp.o
+
+MCTS.i: MCTS.cpp.i
+
+.PHONY : MCTS.i
+
+# target to preprocess a source file
+MCTS.cpp.i:
+	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/MCTS.cpp.i
+.PHONY : MCTS.cpp.i
+
+MCTS.s: MCTS.cpp.s
+
+.PHONY : MCTS.s
+
+# target to generate assembly for a file
+MCTS.cpp.s:
+	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/MCTS.cpp.s
+.PHONY : MCTS.cpp.s
+
 chessboard.o: chessboard.cpp.o
 
 .PHONY : chessboard.o
@@ -186,6 +213,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... c_version"
+	@echo "... MCTS.o"
+	@echo "... MCTS.i"
+	@echo "... MCTS.s"
 	@echo "... chessboard.o"
 	@echo "... chessboard.i"
 	@echo "... chessboard.s"

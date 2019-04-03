@@ -3,5 +3,5 @@ project(c_version)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp chessboard.cpp chessboard.h)
+set(SOURCE_FILES main.cpp chessboard.cpp chessboard.h MCTS.cpp MCTS.h)
 add_executable(c_version ${SOURCE_FILES})

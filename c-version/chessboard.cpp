@@ -172,3 +172,24 @@ void Chessboard::get_possible_solutions(vector<char> &solutions) const {
        }
     }
 }
+
+void Chessboard::set_bitmap(uint_fast64_t board_color, uint_fast64_t board_occupied) {
+    this->board_occupied = board_occupied;
+    this->board_color = board_color;
+}
+
+void Chessboard::set_color(bool color) {
+    this->current_color = color;
+}
+
+uint_fast64_t Chessboard::get_board_color() const {
+    return this->board_color;
+}
+
+uint_fast64_t Chessboard::get_board_occupied() const {
+    return this->board_occupied;
+}
+
+bool Chessboard::get_current_color() const {
+    return this->current_color;
+}

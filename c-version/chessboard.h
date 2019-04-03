@@ -35,6 +35,11 @@ public:
     bool if_black(int x, int y) const;
     bool if_empty(int x, int y) const;
     void make_reverse(int x, int y);
+    void set_color(bool color);
+    void set_bitmap(uint_fast64_t board_color, uint_fast64_t board_occupied);
+    bool get_current_color() const;
+    uint_fast64_t get_board_color() const;
+    uint_fast64_t get_board_occupied() const;
 };
 
 
