@@ -6,6 +6,7 @@
 #define C_VERSION_MCTS_H
 
 #include "chessboard.h"
+#include <assert.h>
 
 
 class MCTS {
@@ -16,9 +17,18 @@ private:
     MCTS *siblings;   // a chain connection all siblings
     int sti_times;
     int win_times;
+    int height;    // the height of the node, probability calculation use
+    int if_end;    // if it is the end of the game
+    static MCTS *root_node;
+    static bool win_expectation;  // if we want black to win, 1, else 0
 public:
     MCTS(Chessboard *init);   // init for father points
-    MCTS(MCTS *init);
+    MCTS(MCTS *init, int x, int y);    // x and y is the move to make
+    int get_height();
+    void set_siblings(MCTS *sibling);
+
+    bool make_children();    // if it is the leaf node, then create children
+
 };
 
 

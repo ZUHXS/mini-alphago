@@ -62,6 +62,21 @@ void Chessboard::get_next_position(int &x, int &y, int direction) const{
 }
 
 bool Chessboard::make_move(int x, int y) {
+    // if x == - 1 && y == -1, means no move can be made, just reverse the color
+    if (x == -1 && y == -1){
+
+#ifdef DEBUG  // check if no move can be made
+        vector<char> temp;
+        this->get_possible_solutions(temp);
+        assert(temp.empty());  // if not empty, the function call is problematic
+#endif
+
+        this->current_color = this->current_color ? 0 : 1;
+        return true;
+    }
+
+
+
     int temp_x, temp_y;
     int if_movable = 0;
     for (int dir = 0; dir < 8; dir++) {
@@ -114,14 +129,23 @@ inline bool Chessboard::if_possible_place(int x, int y) const {
 }
 
 inline bool Chessboard::if_black(int x, int y) const {
+#ifdef DEBUG
+    assert(if_possible_place(x, y));
+#endif
     return this->board_occupied & (1LL << (x + y * 8)) && this->board_color & (1LL << (x + y * 8));
 }
 
 inline bool Chessboard::if_empty(int x, int y) const {
+#ifdef DEBUG
+    assert(if_possible_place(x, y));
+#endif
     return (~this->board_occupied) & (1LL << (x + y * 8));
 }
 
 inline bool Chessboard::if_white(int x, int y) const {
+#ifdef DEBUG
+    assert(if_possible_place(x, y));
+#endif
     return this->board_occupied & (1LL << (x + y * 8)) && (~this->board_color) & (1LL << (x + y * 8));
 }
 
@@ -163,6 +187,7 @@ bool Chessboard::if_movable(int x, int y) const{
 }
 
 void Chessboard::get_possible_solutions(vector<char> &solutions) const {
+    solutions.clear();
     for (int i = 0; i < 8; i++) {
        for (int j = 0; j < 8; j++) {
            if (this->if_movable(i, j)) {
@@ -192,4 +217,26 @@ uint_fast64_t Chessboard::get_board_occupied() const {
 
 bool Chessboard::get_current_color() const {
     return this->current_color;
+}
+
+bool Chessboard::check_end() const {
+    int black = this->black_num();
+    int white = this->white_num();
+    if (white == 0 || black == 0 || black + white == 64) {
+        return 1;
+    }
+    return 0;
+}
+
+int Chessboard::check_win() const {
+    int black = this->black_num();
+    int white = this->white_num();
+    if (white > black) {
+        return 0;
+    }
+    else if (black > white) {
+        return 1;
+    }
+    else
+        return 2;
 }
