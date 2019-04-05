@@ -15,7 +15,6 @@ MCTS::MCTS(Chessboard *init) {   // for the root node
     this->parent = nullptr;
     this->first_children = nullptr;
     this->siblings = nullptr;
-    this->root_node = (long)this;   // is the root node
     this->if_end = 0;
 }
 
@@ -88,4 +87,9 @@ bool MCTS::make_children() {
             MCTS *child = new MCTS(this, -1, -1);   // does not have a possible move
         }
     }
+    return 1;
+}
+
+void MCTS::set_siblings(MCTS *sibling) {
+    this->siblings = sibling;
 }

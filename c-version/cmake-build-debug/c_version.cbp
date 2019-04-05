@@ -44,6 +44,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/Cellar/glfw/3.2.1/include/GLFW"/>
+					<Add directory="/usr/local/include/glad"/>
+					<Add directory="/usr/local/include/KHR"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
@@ -65,6 +68,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/usr/local/Cellar/glfw/3.2.1/include/GLFW"/>
+					<Add directory="/usr/local/include/glad"/>
+					<Add directory="/usr/local/include/KHR"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
@@ -90,6 +96,9 @@
 			<Option target="c_version"/>
 		</Unit>
 		<Unit filename="/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h">
+			<Option target="c_version"/>
+		</Unit>
+		<Unit filename="/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/glad.c">
 			<Option target="c_version"/>
 		</Unit>
 		<Unit filename="/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/main.cpp">
