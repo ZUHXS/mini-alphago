@@ -177,33 +177,6 @@ chessboard.cpp.s:
 	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/chessboard.cpp.s
 .PHONY : chessboard.cpp.s
 
-glad.o: glad.c.o
-
-.PHONY : glad.o
-
-# target to build an object file
-glad.c.o:
-	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/glad.c.o
-.PHONY : glad.c.o
-
-glad.i: glad.c.i
-
-.PHONY : glad.i
-
-# target to preprocess a source file
-glad.c.i:
-	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/glad.c.i
-.PHONY : glad.c.i
-
-glad.s: glad.c.s
-
-.PHONY : glad.s
-
-# target to generate assembly for a file
-glad.c.s:
-	$(MAKE) -f CMakeFiles/c_version.dir/build.make CMakeFiles/c_version.dir/glad.c.s
-.PHONY : glad.c.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -246,9 +219,6 @@ help:
 	@echo "... chessboard.o"
 	@echo "... chessboard.i"
 	@echo "... chessboard.s"
-	@echo "... glad.o"
-	@echo "... glad.i"
-	@echo "... glad.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

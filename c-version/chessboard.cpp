@@ -240,3 +240,65 @@ int Chessboard::check_win() const {
     else
         return 2;
 }
+
+void Chessboard::stimulate_move() {
+    vector<char> solutions;
+    this->get_possible_solutions(solutions);
+
+    vector<char> result;
+
+    int flag = 0;
+    int final_x, final_y;
+    int final_number = 100;
+    while (!solutions.empty()) {
+        flag = 1;
+        int y = solutions.back();
+        solutions.pop_back();
+        int x = solutions.back();
+        solutions.pop_back();
+        int number = this->next_posible_moves(x, y) + rand() % STIMULATE_RANDOM;
+        if (number < final_number) {
+            final_number = number;
+            final_x = x;
+            final_y = y;
+        }
+    }    // here, final_x, final_y is our next move
+    this->make_move(final_x, final_y);
+}
+
+int Chessboard::next_posible_moves(int x, int y) {
+    int color = this->current_color;
+    uint_fast64_t old_board_occupied = this->board_occupied;
+    uint_fast64_t old_board_color = this->board_color;
+
+    this->make_move(x, y);
+    int number = this->get_possible_solutions();
+    return number;
+
+    // reset the state information
+    this->current_color = color;
+    this->board_occupied = old_board_occupied;
+    this->board_color = old_board_color;
+}
+
+int Chessboard::get_possible_solutions() const {
+    int number = 0;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (this->if_movable(i, j)) {
+                number += 1;
+            }
+        }
+    }
+    return number;
+}
+
+bool Chessboard::stimulate() {
+    while (1) {
+        if (this->check_end()) {  // end of the game
+            break;
+        }
+        this->stimulate_move();
+    }
+    return this->check_win();
+}
