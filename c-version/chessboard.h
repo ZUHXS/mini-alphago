@@ -14,7 +14,7 @@ using namespace std;
 #define NEWBOARDOCCUPIED 0x0000001818000000
 #define MAX_INT64 0xFFFFFFFFFFFFFFFF
 
-#define STIMULATE_RANDOM 5
+#define STIMULATE_RANDOM 20
 
 //#define DEBUG  // make some assertions
 

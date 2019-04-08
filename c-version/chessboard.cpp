@@ -74,7 +74,9 @@ bool Chessboard::make_move(int x, int y) {
         this->current_color = this->current_color ? 0 : 1;
         return true;
     }
-
+    if (!this->if_empty(x, y)) {  // can't move here
+        return 0;
+    }
 
 
     int temp_x, temp_y;
@@ -132,7 +134,7 @@ inline bool Chessboard::if_black(int x, int y) const {
 #ifdef DEBUG
     assert(if_possible_place(x, y));
 #endif
-    return this->board_occupied & (1LL << (x + y * 8)) && this->board_color & (1LL << (x + y * 8));
+    return this->board_occupied & (1LL << (x + y * 8)) & this->board_color & (1LL << (x + y * 8));
 }
 
 inline bool Chessboard::if_empty(int x, int y) const {
@@ -146,7 +148,7 @@ inline bool Chessboard::if_white(int x, int y) const {
 #ifdef DEBUG
     assert(if_possible_place(x, y));
 #endif
-    return this->board_occupied & (1LL << (x + y * 8)) && (~this->board_color) & (1LL << (x + y * 8));
+    return this->board_occupied & (1LL << (x + y * 8)) & (~this->board_color) & (1LL << (x + y * 8));
 }
 
 inline void Chessboard::make_reverse(int x, int y) {
@@ -257,13 +259,19 @@ void Chessboard::stimulate_move() {
         int x = solutions.back();
         solutions.pop_back();
         int number = this->next_posible_moves(x, y) + rand() % STIMULATE_RANDOM;
+        //printf("with number x: %d, y: %d, moves is %d\n", x, y, number);
         if (number < final_number) {
             final_number = number;
             final_x = x;
             final_y = y;
         }
     }    // here, final_x, final_y is our next move
+    if (flag == 0) {
+        final_x = -1;
+        final_y = -1;
+    }
     this->make_move(final_x, final_y);
+    int total_number = this->white_num() + this->black_num();
 }
 
 int Chessboard::next_posible_moves(int x, int y) {

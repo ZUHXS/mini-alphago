@@ -17,14 +17,22 @@ def draw_chessboard():
 def draw_piece():
     temp_board_color = board_color
     temp_board_occupied = board_occupied
-    for x in range(8):
-        for y in range(8):
+    for y in range(8):
+        for x in range(8):
             if temp_board_occupied % 2:
                 piece_image = blackpiece if temp_board_color % 2 else whitepiece
                 offset = ((chessboard_width)/8 - piece_width)/2
                 screen.blit(piece_image, (chessboard_x + x*grid_width + offset, chessboard_y + y*grid_height + offset))
             temp_board_color = temp_board_color >> 1
             temp_board_occupied = temp_board_occupied >> 1
+
+def draw_hints(posible_moves):
+    for i in range(len(posible_moves) / 2):
+        x = posible_moves[2*i+1]
+        y = posible_moves[2*i]
+        offset = ((chessboard_width)/8 - hint_width) / 2
+        screen.blit(hintpiece, (chessboard_x + x * grid_width + offset, chessboard_y + y * grid_height + offset))
+
 
 
 
@@ -39,12 +47,15 @@ def init():
     global chessboard_height
     chessboard_height = 400
 
-    global chessboard_x, chessboard_y, piece_width, piece_height, grid_width, grid_height
+    global chessboard_x, chessboard_y, piece_width, piece_height, grid_width, grid_height, hint_width, hint_height
     chessboard_x = 40
     chessboard_y = 60
 
     piece_width = 42
     piece_height = 42
+
+    hint_width = 10
+    hint_height = 10
 
     grid_width = chessboard_width/8
     grid_height = chessboard_height/8
@@ -64,12 +75,14 @@ def init():
     whitepiece_image_filename = img_path + 'white_resize.png'
     home_button_image_filename = img_path + 'home_button.png'
     refresh_button_image_filename = img_path + 'refresh_button.png'
+    hint_image_filename = img_path + 'hint.PNG'
 
-    global background, blackpiece, whitepiece
+    global background, blackpiece, whitepiece, hintpiece
 
     background = pygame.image.load(background_image_filename).convert()
     blackpiece = pygame.image.load(blackpiece_image_filename).convert_alpha()
     whitepiece = pygame.image.load(whitepiece_image_filename).convert_alpha()
+    hintpiece = pygame.image.load(hint_image_filename).convert_alpha()
 
     global color_black, color_white, color_deep_green, color_gray
     color_black = (0,0,0)
@@ -84,15 +97,35 @@ def init():
 
 
     
-def overall():
+def overall(*posible_moves):
+
+    if_click = False
+    mouse_position = pygame.mouse.get_pos()
+
+    
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            exit()
+        elif event.type == MOUSEBUTTONDOWN:
+            if_click = True
+    
+
     screen.blit(background, (0,0))
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT: sys.exit()
 
     draw_chessboard()
     draw_piece()
+    print "in python ", posible_moves 
+    draw_hints(posible_moves)
 
+    
+    if if_click == True:
+        real_x = mouse_position[0] - chessboard_x
+        real_y = mouse_position[1] - chessboard_y
+        if 0 <= real_x <= chessboard_width and 0 <= real_y <= chessboard_height:
+            return (real_x / grid_width, real_y / grid_height)
+    
 
     pygame.display.flip()
+    return (-1, -1)
 

@@ -23,6 +23,8 @@ chessboard.h
 /media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.h
 Python.h
 /media/psf/Home/Documents/GitHub/mini-alphago/c-version/Python.h
+unistd.h
+-
 
 /usr/include/python2.7/Python.h
 patchlevel.h
