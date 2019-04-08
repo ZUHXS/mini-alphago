@@ -23,13 +23,13 @@ def draw_piece():
                 piece_image = blackpiece if temp_board_color % 2 else whitepiece
                 offset = ((chessboard_width)/8 - piece_width)/2
                 screen.blit(piece_image, (chessboard_x + x*grid_width + offset, chessboard_y + y*grid_height + offset))
-            print(bin(board_color))
             temp_board_color = temp_board_color >> 1
             temp_board_occupied = temp_board_occupied >> 1
 
-def overall():
-    pygame.init()
 
+
+def init():
+    pygame.init()
     size = width, height = 480, 680
     global screen
     screen = pygame.display.set_mode(size)
@@ -83,15 +83,16 @@ def overall():
     board_color = 0x810000000
 
 
+    
+def overall():
+    screen.blit(background, (0,0))
 
-    while 1:
-        screen.blit(background, (0,0))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: sys.exit()
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: sys.exit()
-
-        draw_chessboard()
-        draw_piece()
+    draw_chessboard()
+    draw_piece()
 
 
-        pygame.display.flip()
+    pygame.display.flip()
+

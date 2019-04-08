@@ -6,13 +6,31 @@
 
 #IncludeRegexTransform: 
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/Python.h
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.h
+iostream
+-
+vector
+-
+
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/main.cpp
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+chessboard.h
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.h
+Python.h
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/Python.h
+
+/usr/include/python2.7/Python.h
 patchlevel.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/patchlevel.h
+/usr/include/python2.7/patchlevel.h
 pyconfig.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyconfig.h
+/usr/include/python2.7/pyconfig.h
 pymacconfig.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymacconfig.h
+/usr/include/python2.7/pymacconfig.h
 limits.h
 -
 stdio.h
@@ -25,218 +43,304 @@ stdlib.h
 -
 unistd.h
 -
+crypt.h
+-
 stddef.h
 -
 assert.h
 -
 pyport.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyport.h
+/usr/include/python2.7/pyport.h
 pymath.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymath.h
+/usr/include/python2.7/pymath.h
 pymem.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymem.h
+/usr/include/python2.7/pymem.h
 object.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/object.h
+/usr/include/python2.7/object.h
 objimpl.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/objimpl.h
+/usr/include/python2.7/objimpl.h
 pydebug.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pydebug.h
+/usr/include/python2.7/pydebug.h
 unicodeobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/unicodeobject.h
+/usr/include/python2.7/unicodeobject.h
 intobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/intobject.h
+/usr/include/python2.7/intobject.h
 boolobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/boolobject.h
+/usr/include/python2.7/boolobject.h
 longobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/longobject.h
+/usr/include/python2.7/longobject.h
 floatobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/floatobject.h
+/usr/include/python2.7/floatobject.h
 complexobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/complexobject.h
+/usr/include/python2.7/complexobject.h
 rangeobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/rangeobject.h
+/usr/include/python2.7/rangeobject.h
 stringobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/stringobject.h
+/usr/include/python2.7/stringobject.h
 memoryobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/memoryobject.h
+/usr/include/python2.7/memoryobject.h
 bufferobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/bufferobject.h
+/usr/include/python2.7/bufferobject.h
 bytesobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/bytesobject.h
+/usr/include/python2.7/bytesobject.h
 bytearrayobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/bytearrayobject.h
+/usr/include/python2.7/bytearrayobject.h
 tupleobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/tupleobject.h
+/usr/include/python2.7/tupleobject.h
 listobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/listobject.h
+/usr/include/python2.7/listobject.h
 dictobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/dictobject.h
+/usr/include/python2.7/dictobject.h
 enumobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/enumobject.h
+/usr/include/python2.7/enumobject.h
 setobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/setobject.h
+/usr/include/python2.7/setobject.h
 methodobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/methodobject.h
+/usr/include/python2.7/methodobject.h
 moduleobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/moduleobject.h
+/usr/include/python2.7/moduleobject.h
 funcobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/funcobject.h
+/usr/include/python2.7/funcobject.h
 classobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/classobject.h
+/usr/include/python2.7/classobject.h
 fileobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/fileobject.h
+/usr/include/python2.7/fileobject.h
 cobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/cobject.h
+/usr/include/python2.7/cobject.h
 pycapsule.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pycapsule.h
+/usr/include/python2.7/pycapsule.h
 traceback.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/traceback.h
+/usr/include/python2.7/traceback.h
 sliceobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/sliceobject.h
+/usr/include/python2.7/sliceobject.h
 cellobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/cellobject.h
+/usr/include/python2.7/cellobject.h
 iterobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/iterobject.h
+/usr/include/python2.7/iterobject.h
 genobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/genobject.h
+/usr/include/python2.7/genobject.h
 descrobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/descrobject.h
+/usr/include/python2.7/descrobject.h
 warnings.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/warnings.h
+/usr/include/python2.7/warnings.h
 weakrefobject.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/weakrefobject.h
+/usr/include/python2.7/weakrefobject.h
 codecs.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/codecs.h
+/usr/include/python2.7/codecs.h
 pyerrors.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyerrors.h
+/usr/include/python2.7/pyerrors.h
 pystate.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pystate.h
+/usr/include/python2.7/pystate.h
 pyarena.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyarena.h
+/usr/include/python2.7/pyarena.h
 modsupport.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/modsupport.h
+/usr/include/python2.7/modsupport.h
 pythonrun.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pythonrun.h
+/usr/include/python2.7/pythonrun.h
 ceval.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/ceval.h
+/usr/include/python2.7/ceval.h
 sysmodule.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/sysmodule.h
+/usr/include/python2.7/sysmodule.h
 intrcheck.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/intrcheck.h
+/usr/include/python2.7/intrcheck.h
 import.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/import.h
+/usr/include/python2.7/import.h
 abstract.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/abstract.h
+/usr/include/python2.7/abstract.h
 compile.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/compile.h
+/usr/include/python2.7/compile.h
 eval.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/eval.h
+/usr/include/python2.7/eval.h
 pyctype.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyctype.h
+/usr/include/python2.7/pyctype.h
 pystrtod.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pystrtod.h
+/usr/include/python2.7/pystrtod.h
 pystrcmp.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pystrcmp.h
+/usr/include/python2.7/pystrcmp.h
 dtoa.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/dtoa.h
+/usr/include/python2.7/dtoa.h
 pyfpe.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyfpe.h
+/usr/include/python2.7/pyfpe.h
 pth.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/abstract.h
+/usr/include/python2.7/abstract.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/boolobject.h
+/usr/include/python2.7/boolobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/bufferobject.h
+/usr/include/python2.7/bufferobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/bytearrayobject.h
+/usr/include/python2.7/bytearrayobject.h
 stdarg.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/bytesobject.h
+/usr/include/python2.7/bytesobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/cellobject.h
+/usr/include/python2.7/cellobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/ceval.h
+/usr/include/python2.7/ceval.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/classobject.h
+/usr/include/python2.7/classobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/cobject.h
+/usr/include/python2.7/cobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/code.h
+/usr/include/python2.7/code.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/codecs.h
+/usr/include/python2.7/codecs.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/compile.h
+/usr/include/python2.7/compile.h
 code.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/code.h
+/usr/include/python2.7/code.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/complexobject.h
+/usr/include/python2.7/complexobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/descrobject.h
+/usr/include/python2.7/descrobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/dictobject.h
+/usr/include/python2.7/dictobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/dtoa.h
+/usr/include/python2.7/dtoa.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/enumobject.h
+/usr/include/python2.7/enumobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/eval.h
+/usr/include/python2.7/eval.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/fileobject.h
+/usr/include/python2.7/fileobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/floatobject.h
+/usr/include/python2.7/floatobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/funcobject.h
+/usr/include/python2.7/funcobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/genobject.h
+/usr/include/python2.7/genobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/import.h
+/usr/include/python2.7/import.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/intobject.h
+/usr/include/python2.7/intobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/intrcheck.h
+/usr/include/python2.7/intrcheck.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/iterobject.h
+/usr/include/python2.7/iterobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/listobject.h
+/usr/include/python2.7/listobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/longobject.h
+/usr/include/python2.7/longobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/memoryobject.h
+/usr/include/python2.7/memoryobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/methodobject.h
+/usr/include/python2.7/methodobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/modsupport.h
+/usr/include/python2.7/modsupport.h
 stdarg.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/moduleobject.h
+/usr/include/python2.7/moduleobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/object.h
+/usr/include/python2.7/object.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/objimpl.h
+/usr/include/python2.7/objimpl.h
 pymem.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymem.h
+/usr/include/python2.7/pymem.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/patchlevel.h
+/usr/include/python2.7/patchlevel.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyarena.h
+/usr/include/python2.7/pyarena.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pycapsule.h
+/usr/include/python2.7/pycapsule.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyconfig.h
+/usr/include/python2.7/pyconfig.h
+x86_64-linux-gnu/python2.7/pyconfig.h
+-
+x86_64-linux-gnux32/python2.7/pyconfig.h
+-
+i386-linux-gnu/python2.7/pyconfig.h
+-
+aarch64_ilp32-linux-gnu/python2.7/pyconfig.h
+-
+aarch64-linux-gnu/python2.7/pyconfig.h
+-
+aarch64_be_ilp32-linux-gnu/python2.7/pyconfig.h
+-
+aarch64_be-linux-gnu/python2.7/pyconfig.h
+-
+alpha-linux-gnu/python2.7/pyconfig.h
+-
+arm-linux-gnueabihf/python2.7/pyconfig.h
+-
+armeb-linux-gnueabihf/python2.7/pyconfig.h
+-
+arm-linux-gnueabi/python2.7/pyconfig.h
+-
+armeb-linux-gnueabi/python2.7/pyconfig.h
+-
+hppa-linux-gnu/python2.7/pyconfig.h
+-
+ia64-linux-gnu/python2.7/pyconfig.h
+-
+m68k-linux-gnu/python2.7/pyconfig.h
+-
+mipsisa32r6el-linux-gnu/python2.7/pyconfig.h
+-
+mipsisa64r6el-linux-gnuabin32/python2.7/pyconfig.h
+-
+mipsisa64r6el-linux-gnuabi64/python2.7/pyconfig.h
+-
+mipsisa32r6-linux-gnu/python2.7/pyconfig.h
+-
+mipsisa64r6-linux-gnuabin32/python2.7/pyconfig.h
+-
+mipsisa64r6-linux-gnuabi64/python2.7/pyconfig.h
+-
+mipsel-linux-gnu/python2.7/pyconfig.h
+-
+mips64el-linux-gnuabin32/python2.7/pyconfig.h
+-
+mips64el-linux-gnuabi64/python2.7/pyconfig.h
+-
+mips-linux-gnu/python2.7/pyconfig.h
+-
+mips64-linux-gnuabin32/python2.7/pyconfig.h
+-
+mips64-linux-gnuabi64/python2.7/pyconfig.h
+-
+or1k-linux-gnu/python2.7/pyconfig.h
+-
+powerpc-linux-gnuspe/python2.7/pyconfig.h
+-
+powerpc64le-linux-gnu/python2.7/pyconfig.h
+-
+powerpc64-linux-gnu/python2.7/pyconfig.h
+-
+powerpc-linux-gnu/python2.7/pyconfig.h
+-
+s390x-linux-gnu/python2.7/pyconfig.h
+-
+s390-linux-gnu/python2.7/pyconfig.h
+-
+sh4-linux-gnu/python2.7/pyconfig.h
+-
+sparc64-linux-gnu/python2.7/pyconfig.h
+-
+sparc-linux-gnu/python2.7/pyconfig.h
+-
+riscv64-linux-gnu/python2.7/pyconfig.h
+-
+riscv32-linux-gnu/python2.7/pyconfig.h
+-
+x86_64-kfreebsd-gnu/python2.7/pyconfig.h
+-
+i386-kfreebsd-gnu/python2.7/pyconfig.h
+-
+i386-gnu/python2.7/pyconfig.h
+-
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyctype.h
+/usr/include/python2.7/pyctype.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pydebug.h
+/usr/include/python2.7/pydebug.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyerrors.h
+/usr/include/python2.7/pyerrors.h
 stdarg.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyfpe.h
+/usr/include/python2.7/pyfpe.h
 signal.h
 -
 setjmp.h
@@ -244,19 +348,19 @@ setjmp.h
 math.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymacconfig.h
+/usr/include/python2.7/pymacconfig.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymath.h
+/usr/include/python2.7/pymath.h
 pyconfig.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyconfig.h
+/usr/include/python2.7/pyconfig.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pymem.h
+/usr/include/python2.7/pymem.h
 pyport.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyport.h
+/usr/include/python2.7/pyport.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyport.h
+/usr/include/python2.7/pyport.h
 pyconfig.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pyconfig.h
+/usr/include/python2.7/pyconfig.h
 inttypes.h
 -
 stdint.h
@@ -280,7 +384,7 @@ sys/select.h
 sys/types.h
 -
 unixstuff.h
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/unixstuff.h
+/usr/include/python2.7/unixstuff.h
 sys/types.h
 -
 sys/stat.h
@@ -300,31 +404,31 @@ ctype.h
 wctype.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pystate.h
+/usr/include/python2.7/pystate.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pystrcmp.h
+/usr/include/python2.7/pystrcmp.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pystrtod.h
+/usr/include/python2.7/pystrtod.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/pythonrun.h
+/usr/include/python2.7/pythonrun.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/rangeobject.h
+/usr/include/python2.7/rangeobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/setobject.h
+/usr/include/python2.7/setobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/sliceobject.h
+/usr/include/python2.7/sliceobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/stringobject.h
+/usr/include/python2.7/stringobject.h
 stdarg.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/sysmodule.h
+/usr/include/python2.7/sysmodule.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/traceback.h
+/usr/include/python2.7/traceback.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/tupleobject.h
+/usr/include/python2.7/tupleobject.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/unicodeobject.h
+/usr/include/python2.7/unicodeobject.h
 stdarg.h
 -
 ctype.h
@@ -336,39 +440,7 @@ wchar.h
 wctype.h
 -
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/warnings.h
+/usr/include/python2.7/warnings.h
 
-/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7/weakrefobject.h
-
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/MCTS.cpp
-MCTS.h
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/MCTS.h
-
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/MCTS.h
-chessboard.h
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
-assert.h
--
-
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.cpp
-chessboard.h
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
-
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
-iostream
--
-vector
--
-
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/main.cpp
-iostream
--
-stdio.h
--
-stdlib.h
--
-chessboard.h
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/chessboard.h
-Python.h
-/Users/zuhxs/Documents/GitHub/mini-alphago/c-version/Python.h
+/usr/include/python2.7/weakrefobject.h
 

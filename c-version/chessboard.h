@@ -16,7 +16,7 @@ using namespace std;
 
 #define STIMULATE_RANDOM 5
 
-#define DEBUG  // make some assertions
+//#define DEBUG  // make some assertions
 
 class Chessboard {
 private:

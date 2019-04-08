@@ -14,8 +14,13 @@ int main(int argc, char *argv[]) {
     }
 
     PySys_SetArgv(argc, argv);
-    PyRun_SimpleString("import game");
-    PyRun_SimpleString("game.overall()");
+    PyRun_SimpleString("import game, time");
+    PyRun_SimpleString("game.init()");
+
+    while (1) {
+        PyRun_SimpleString("game.overall()");
+        PyRun_SimpleString("game.board_color = 0x800000000");
+    }
     Py_Finalize();
     return 0;
 }

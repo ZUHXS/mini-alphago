@@ -1,4 +1,4 @@
-/usr/local/Cellar/cmake/3.10.0/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/zuhxs/Documents/GitHub/mini-alphago/c-version
+/home/zuhxs/Downloads/clion-2019.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /media/psf/Home/Documents/GitHub/mini-alphago/c-version
 -- Configuring done
 -- Generating done
--- Build files have been written to: /Users/zuhxs/Documents/GitHub/mini-alphago/c-version/cmake-build-debug
+-- Build files have been written to: /media/psf/Home/Documents/GitHub/mini-alphago/c-version/cmake-build-debug

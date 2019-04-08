@@ -1,2 +1,3 @@
-Options: 
-CMake: 3.10.0@/usr/local/Cellar/cmake/3.10.0/bin/cmake
+ToolSet: 1.0 (local)Options: 
+
+Options:

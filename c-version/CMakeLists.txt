@@ -3,10 +3,12 @@ project(c_version)
 
 set(CMAKE_CXX_STANDARD 11)
 
+include_directories(/usr/include/python2.7)
+set(CMAKE_LIBRARY_PATH "/usr/lib/python2.7")
 
-include_directories(/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7)
-set(CMAKE_LIBRARY_PATH "/System/Library/Frameworks/Python.framework/Versions/2.7/lib")
-link_libraries(python)
+#include_directories(/System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7)
+#set(CMAKE_LIBRARY_PATH "/System/Library/Frameworks/Python.framework/Versions/2.7/lib")
+link_libraries(python2.7)
 
 
 set(SOURCE_FILES main.cpp chessboard.cpp chessboard.h MCTS.cpp MCTS.h)
