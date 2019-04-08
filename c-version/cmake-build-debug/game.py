@@ -35,7 +35,6 @@ def draw_hints(posible_moves):
 
 
 
-
 def init():
     pygame.init()
     size = width, height = 480, 680
@@ -115,7 +114,6 @@ def overall(*posible_moves):
 
     draw_chessboard()
     draw_piece()
-    print "in python ", posible_moves 
     draw_hints(posible_moves)
 
     

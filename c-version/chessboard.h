@@ -14,7 +14,7 @@ using namespace std;
 #define NEWBOARDOCCUPIED 0x0000001818000000
 #define MAX_INT64 0xFFFFFFFFFFFFFFFF
 
-#define STIMULATE_RANDOM 20
+#define STIMULATE_RANDOM 5
 
 //#define DEBUG  // make some assertions
 
@@ -23,9 +23,10 @@ private:
     bool current_color;
     uint_fast64_t board_color;
     uint_fast64_t board_occupied;
-    int is_end;
+    bool is_end;
 public:
     Chessboard();
+    bool check_end();
     int black_num() const;   // return the number of black chess
     int white_num() const;   // return the number of white chess
     void get_possible_solutions(vector <char> &solutions) const;   // fill the vector with x1, y1, x2, y2, if no possible solutions, return empty vector
@@ -44,7 +45,6 @@ public:
     bool get_current_color() const;      // get current color, MCTS use
     uint_fast64_t get_board_color() const;    // get board color, MCTS use
     uint_fast64_t get_board_occupied() const;  // get board bitmap, MCTS use
-    bool check_end() const;   // if end of the game, return 1, else 0
     int check_win() const;    // if tie, return 2, if black wins, return 1, if white wins, return 0
     void stimulate_move();    // stimulate the value and select a move
     bool stimulate();         // for MCTS use, stimulate the moving, if black wins, return 1, else return 0

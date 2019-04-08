@@ -8,6 +8,7 @@ Chessboard::Chessboard(){
     this->board_occupied = NEWBOARDOCCUPIED;
     this->board_color = NEWBOARDCOLOR;
     this->current_color = 1;
+    this->is_end = 0;
 }
 
 int Chessboard::black_num() const {
@@ -65,13 +66,17 @@ bool Chessboard::make_move(int x, int y) {
     // if x == - 1 && y == -1, means no move can be made, just reverse the color
     if (x == -1 && y == -1){
 
-#ifdef DEBUG  // check if no move can be made
+#ifdef DEBUG  // check if indeed no move can be made
         vector<char> temp;
         this->get_possible_solutions(temp);
         assert(temp.empty());  // if not empty, the function call is problematic
 #endif
 
         this->current_color = this->current_color ? 0 : 1;
+        // test if the opponent can make a legal move, if not, stop the game
+        if (!this->get_possible_solutions()) {  // return value is 0, stop the game
+            this->is_end = 1;  // end the game
+        }
         return true;
     }
     if (!this->if_empty(x, y)) {  // can't move here
@@ -221,15 +226,6 @@ bool Chessboard::get_current_color() const {
     return this->current_color;
 }
 
-bool Chessboard::check_end() const {
-    int black = this->black_num();
-    int white = this->white_num();
-    if (white == 0 || black == 0 || black + white == 64) {
-        return 1;
-    }
-    return 0;
-}
-
 int Chessboard::check_win() const {
     int black = this->black_num();
     int white = this->white_num();
@@ -239,8 +235,10 @@ int Chessboard::check_win() const {
     else if (black > white) {
         return 1;
     }
-    else
+    else {
+        printf("tie!\n");
         return 2;
+    }
 }
 
 void Chessboard::stimulate_move() {
@@ -259,7 +257,6 @@ void Chessboard::stimulate_move() {
         int x = solutions.back();
         solutions.pop_back();
         int number = this->next_posible_moves(x, y) + rand() % STIMULATE_RANDOM;
-        //printf("with number x: %d, y: %d, moves is %d\n", x, y, number);
         if (number < final_number) {
             final_number = number;
             final_x = x;
@@ -281,12 +278,12 @@ int Chessboard::next_posible_moves(int x, int y) {
 
     this->make_move(x, y);
     int number = this->get_possible_solutions();
-    return number;
 
     // reset the state information
     this->current_color = color;
     this->board_occupied = old_board_occupied;
     this->board_color = old_board_color;
+    return number;
 }
 
 int Chessboard::get_possible_solutions() const {
@@ -302,11 +299,17 @@ int Chessboard::get_possible_solutions() const {
 }
 
 bool Chessboard::stimulate() {
+    int number = 0;
     while (1) {
-        if (this->check_end()) {  // end of the game
+        number += 1;
+        if (this->is_end) {  // end of the game
             break;
         }
         this->stimulate_move();
     }
     return this->check_win();
+}
+
+bool Chessboard::check_end() {
+    return this->is_end;
 }

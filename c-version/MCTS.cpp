@@ -59,32 +59,27 @@ bool MCTS::make_children() {
         previous = child;
     }
     if (!flag) {
-        if (this->chessboard.check_end()) {   // end of the game
+        MCTS *child = new MCTS(this, -1, -1);   // does not have a possible move
+        if (!child->chessboard.get_possible_solutions()) {   // the opponent still can't make a move
             this->if_end = 1;
             int situation = this->chessboard.check_win();
             if (this->win_expectation) {  // we want black to win, if it is a tie, we consider we win
                 if (situation == 1 || situation == 2) {
                     this->sti_times = 1;
                     this->win_times = 1;
-                }
-                else {
+                } else {
                     this->sti_times = 1;
                     this->win_times = 0;
                 }
-            }
-            else {
+            } else {
                 if (situation == 0 || situation == 2) {
                     this->sti_times = 1;
                     this->win_times = 1;
-                }
-                else {
+                } else {
                     this->sti_times = 1;
                     this->win_times = 0;
                 }
             }
-        }
-        else {
-            MCTS *child = new MCTS(this, -1, -1);   // does not have a possible move
         }
     }
     return 1;
@@ -92,4 +87,37 @@ bool MCTS::make_children() {
 
 void MCTS::set_siblings(MCTS *sibling) {
     this->siblings = sibling;
+}
+
+float MCTS::get_ucb(int total_N) {
+    if (total_N == 0) {
+        return 1000;
+    }
+    else {
+        return (float) ((double)this->win_times / (double)this->sti_times + sqrt(log(total_N) * C / (float)this->sti_times));
+    }
+}
+
+MCTS* MCTS::select_ucb() {
+    MCTS *best = this->first_children;
+    MCTS *p = this->first_children;
+    int total_N = this->sti_times;
+    float best_ucb_1 = -1;
+    float best_ucb_2 = INFINITY;
+    while (p != NULL) {
+        float ucb = p->get_ucb(total_N);
+        if (this->height % 2) {
+            if (ucb > best_ucb_1) {
+                best_ucb_1 = ucb;
+                best = p;
+            }
+        } else {
+            if (ucb < best_ucb_2) {
+                best_ucb_2 = ucb;
+                best = p;
+            }
+        }
+        p = p->siblings;
+    }
+    return best;
 }

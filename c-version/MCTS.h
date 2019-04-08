@@ -7,6 +7,10 @@
 
 #include "chessboard.h"
 #include <assert.h>
+#include <math.h>
+
+#define C 2
+#define INFINITY 100000
 
 
 class MCTS {
@@ -26,6 +30,8 @@ public:
     MCTS(MCTS *init, int x, int y);    // x and y is the move to make
     int get_height();
     void set_siblings(MCTS *sibling);
+    float get_ucb(int total_N);
+    MCTS *select_ucb();
 
     bool make_children();    // if it is the leaf node, then create children
 
