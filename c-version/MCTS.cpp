@@ -16,6 +16,7 @@ MCTS::MCTS(Chessboard *init) {   // for the root node
     this->first_children = nullptr;
     this->siblings = nullptr;
     this->if_end = 0;
+    MCTS::root_node = this;
 }
 
 MCTS::MCTS(MCTS *init, int x, int y) {
@@ -120,4 +121,33 @@ MCTS* MCTS::select_ucb() {
         p = p->siblings;
     }
     return best;
+}
+
+void MCTS::do_MCTS() {
+#ifdef DEBUG
+    if (MCTS::root_node != this) {
+        printf("root node not match!\n");
+    }
+#endif
+    bool win_condition = root_node->chessboard.get_current_color();
+
+    MCTS *temp = MCTS::root_node;
+
+    int countings = 0;
+    while (countings <= MAXCOUNTING) {
+        countings++;
+        while (temp->first_children != NULL) {
+            temp = temp->select_ucb();
+        }
+        temp->make_children();
+        temp = temp->first_children;
+        bool victory = temp->make_stimulate();
+
+    }
+
+}
+
+
+bool MCTS::make_stimulate() {
+    return this->chessboard.stimulate();
 }

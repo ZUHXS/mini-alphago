@@ -11,6 +11,7 @@
 
 #define C 2
 #define INFINITY 100000
+#define MAXCOUNTING 1000
 
 
 class MCTS {
@@ -23,6 +24,8 @@ private:
     int win_times;
     int height;    // the height of the node, probability calculation use
     int if_end;    // if it is the end of the game
+    int best_x;
+    int best_y;
     static MCTS *root_node;
     static bool win_expectation;  // if we want black to win, 1, else 0
 public:
@@ -32,8 +35,10 @@ public:
     void set_siblings(MCTS *sibling);
     float get_ucb(int total_N);
     MCTS *select_ucb();
+    bool make_stimulate();
 
     bool make_children();    // if it is the leaf node, then create children
+    void do_MCTS();
 
 };
 
