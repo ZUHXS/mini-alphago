@@ -4,12 +4,19 @@
 #include "chessboard.h"
 #include "Python.h"
 #include <unistd.h>
+#include "MCTS.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
 
-    //srand(time(0));
+    srand(time(0));
+
+    Chessboard chessboard;
+    MCTS chess(&chessboard);
+    chess.do_MCTS();
+
+    /*
 
     Py_Initialize();
     if (!Py_IsInitialized()) {
@@ -60,5 +67,6 @@ int main(int argc, char *argv[]) {
         PyRun_SimpleString(occupied_string.c_str());
     }
     Py_Finalize();
+     */
     return 0;
 }

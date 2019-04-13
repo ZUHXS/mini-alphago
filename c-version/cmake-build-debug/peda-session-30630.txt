@@ -1,0 +1,5 @@
+break /media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.cpp:240
+break /media/psf/Home/Documents/GitHub/mini-alphago/c-version/MCTS.cpp:152
+break /media/psf/Home/Documents/GitHub/mini-alphago/c-version/MCTS.cpp:154
+
+set exec-wrapper The wrapper for running programs is \

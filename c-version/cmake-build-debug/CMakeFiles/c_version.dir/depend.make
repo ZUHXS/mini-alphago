@@ -8,6 +8,7 @@ CMakeFiles/c_version.dir/MCTS.cpp.o: ../chessboard.h
 CMakeFiles/c_version.dir/chessboard.cpp.o: ../chessboard.cpp
 CMakeFiles/c_version.dir/chessboard.cpp.o: ../chessboard.h
 
+CMakeFiles/c_version.dir/main.cpp.o: ../MCTS.h
 CMakeFiles/c_version.dir/main.cpp.o: ../chessboard.h
 CMakeFiles/c_version.dir/main.cpp.o: ../main.cpp
 CMakeFiles/c_version.dir/main.cpp.o: /usr/include/python2.7/Python.h

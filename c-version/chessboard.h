@@ -26,6 +26,7 @@ private:
     bool is_end;
 public:
     Chessboard();
+    Chessboard(Chessboard *init);
     bool check_end();
     int black_num() const;   // return the number of black chess
     int white_num() const;   // return the number of white chess
@@ -49,6 +50,7 @@ public:
     void stimulate_move();    // stimulate the value and select a move
     bool stimulate();         // for MCTS use, stimulate the moving, if black wins, return 1, else return 0
     int next_posible_moves(int x, int y);   // after making move at (x, y), check the number of possible solutions
+    bool get_is_end();
 };
 
 

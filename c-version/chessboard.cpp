@@ -11,6 +11,14 @@ Chessboard::Chessboard(){
     this->is_end = 0;
 }
 
+
+Chessboard::Chessboard(Chessboard *init) {
+    this->board_occupied = init->get_board_occupied();
+    this->board_color = init->get_board_color();
+    this->current_color = init->get_current_color();
+    this->is_end = init->get_is_end();
+}
+
 int Chessboard::black_num() const {
     int number = 0;
     uint_fast64_t temp = this->board_color & this->board_occupied;
@@ -229,6 +237,7 @@ bool Chessboard::get_current_color() const {
 int Chessboard::check_win() const {
     int black = this->black_num();
     int white = this->white_num();
+    cout << black << " " << white << endl;
     if (white > black) {
         return 0;
     }
@@ -236,7 +245,7 @@ int Chessboard::check_win() const {
         return 1;
     }
     else {
-        printf("tie!\n");
+        cout << "tie " << black << " " << white << endl;
         return 2;
     }
 }
@@ -257,6 +266,7 @@ void Chessboard::stimulate_move() {
         int x = solutions.back();
         solutions.pop_back();
         int number = this->next_posible_moves(x, y) + rand() % STIMULATE_RANDOM;
+        //int number = rand() % STIMULATE_RANDOM;
         if (number < final_number) {
             final_number = number;
             final_x = x;
@@ -299,17 +309,24 @@ int Chessboard::get_possible_solutions() const {
 }
 
 bool Chessboard::stimulate() {
+    auto temp_chessboard = new Chessboard(this);
     int number = 0;
     while (1) {
         number += 1;
-        if (this->is_end) {  // end of the game
+        if (temp_chessboard->is_end) {  // end of the game
             break;
         }
-        this->stimulate_move();
+        temp_chessboard->stimulate_move();
     }
-    return this->check_win();
+    bool win_situation = temp_chessboard->check_win();
+    delete temp_chessboard;
+    return win_situation;
 }
 
 bool Chessboard::check_end() {
+    return this->is_end;
+}
+
+bool Chessboard::get_is_end() {
     return this->is_end;
 }

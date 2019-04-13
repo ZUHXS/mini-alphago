@@ -11,7 +11,7 @@
 
 #define C 2
 #define INFINITY 100000
-#define MAXCOUNTING 1000
+#define MAXCOUNTING 60
 
 
 class MCTS {
@@ -26,8 +26,10 @@ private:
     int if_end;    // if it is the end of the game
     int best_x;
     int best_y;
+    int prev_x;
+    int prev_y;
     static MCTS *root_node;
-    static bool win_expectation;  // if we want black to win, 1, else 0
+    //static bool win_expectation;  // if we want black to win, 1, else 0
 public:
     MCTS(Chessboard *init);   // init for father points
     MCTS(MCTS *init, int x, int y);    // x and y is the move to make
@@ -36,9 +38,12 @@ public:
     float get_ucb(int total_N);
     MCTS *select_ucb();
     bool make_stimulate();
+    bool get_prev_xy(int &x, int &y);
+    bool get_win_condition();   // if we want black to win, return 1, else return 0
 
     bool make_children();    // if it is the leaf node, then create children
     void do_MCTS();
+    void back_propagate(bool victory);
 
 };
 

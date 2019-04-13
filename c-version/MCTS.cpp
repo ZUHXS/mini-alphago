@@ -4,7 +4,8 @@
 
 #include "MCTS.h"
 
-bool MCTS::win_expectation = 0;
+MCTS *MCTS::root_node = nullptr;
+//bool MCTS::win_expectation = 0;
 
 MCTS::MCTS(Chessboard *init) {   // for the root node
     this->chessboard.set_bitmap(init->get_board_color(), init->get_board_occupied());
@@ -16,7 +17,7 @@ MCTS::MCTS(Chessboard *init) {   // for the root node
     this->first_children = nullptr;
     this->siblings = nullptr;
     this->if_end = 0;
-    MCTS::root_node = this;
+    root_node = this;
 }
 
 MCTS::MCTS(MCTS *init, int x, int y) {
@@ -36,6 +37,8 @@ MCTS::MCTS(MCTS *init, int x, int y) {
     this->siblings = nullptr;
     this->if_end = 0;
     this->height = init->get_height() + 1;
+    this->prev_x = x;
+    this->prev_y = y;
 }
 
 int MCTS::get_height() {
@@ -53,34 +56,22 @@ bool MCTS::make_children() {
         solutions.pop_back();
         int x = solutions.back();
         solutions.pop_back();
-        MCTS *child = new MCTS(this, x, y);
+        auto child = new MCTS(this, x, y);
         if (previous) {   // init siblings
             previous->set_siblings(child);
+        }
+        else {
+            this->first_children = child;
         }
         previous = child;
     }
     if (!flag) {
-        MCTS *child = new MCTS(this, -1, -1);   // does not have a possible move
+        auto child = new MCTS(this, -1, -1);   // does not have a possible move
         if (!child->chessboard.get_possible_solutions()) {   // the opponent still can't make a move
             this->if_end = 1;
-            int situation = this->chessboard.check_win();
-            if (this->win_expectation) {  // we want black to win, if it is a tie, we consider we win
-                if (situation == 1 || situation == 2) {
-                    this->sti_times = 1;
-                    this->win_times = 1;
-                } else {
-                    this->sti_times = 1;
-                    this->win_times = 0;
-                }
-            } else {
-                if (situation == 0 || situation == 2) {
-                    this->sti_times = 1;
-                    this->win_times = 1;
-                } else {
-                    this->sti_times = 1;
-                    this->win_times = 0;
-                }
-            }
+        }
+        else {
+            this->first_children = child;
         }
     }
     return 1;
@@ -91,7 +82,7 @@ void MCTS::set_siblings(MCTS *sibling) {
 }
 
 float MCTS::get_ucb(int total_N) {
-    if (total_N == 0) {
+    if (this->sti_times == 0) {
         return 1000;
     }
     else {
@@ -100,8 +91,8 @@ float MCTS::get_ucb(int total_N) {
 }
 
 MCTS* MCTS::select_ucb() {
-    MCTS *best = this->first_children;
-    MCTS *p = this->first_children;
+    auto best = this->first_children;
+    auto p = this->first_children;
     int total_N = this->sti_times;
     float best_ucb_1 = -1;
     float best_ucb_2 = INFINITY;
@@ -129,25 +120,66 @@ void MCTS::do_MCTS() {
         printf("root node not match!\n");
     }
 #endif
-    bool win_condition = root_node->chessboard.get_current_color();
+    bool win_condition = get_win_condition();
 
-    MCTS *temp = MCTS::root_node;
+    auto temp = root_node;
 
     int countings = 0;
     while (countings <= MAXCOUNTING) {
         countings++;
+        cout << countings << endl;
         while (temp->first_children != NULL) {
             temp = temp->select_ucb();
         }
         temp->make_children();
+        if (temp->if_end) {   // check end when make children
+            int situation = this->chessboard.check_win();
+            if (get_win_condition()) {  // we want black to win, if it is a tie, we consider we win
+                if (situation == 1 || situation == 2) {
+                    back_propagate(1);
+                } else {
+                    back_propagate(0);
+                }
+            } else {
+                if (situation == 0 || situation == 2) {
+                    back_propagate(1);
+                } else {
+                    back_propagate(0);
+                }
+            }
+        }
         temp = temp->first_children;
         bool victory = temp->make_stimulate();
-
+        victory = !static_cast<bool>((victory) ^ (win_condition));
+        //bool victory = ~(temp->make_stimulate() ^ win_condition);
+        temp->back_propagate(victory);
     }
+    temp = root_node;
+    cout << "the conditions are " << temp->sti_times << " " << temp->win_times << endl;
 
 }
 
 
 bool MCTS::make_stimulate() {
     return this->chessboard.stimulate();
+}
+
+void MCTS::back_propagate(bool victory) {
+    auto p = this;
+    while (p != root_node) {
+        p->win_times += victory;
+        p->sti_times += 1;
+        p = p->parent;
+    }
+    p->win_times += victory;
+    p->sti_times += 1;   // add the root node
+}
+
+bool MCTS::get_prev_xy(int &x, int &y) {
+    x = this->prev_x;
+    y = this->prev_y;
+}
+
+bool MCTS::get_win_condition() {
+    return root_node->chessboard.get_current_color();
 }
