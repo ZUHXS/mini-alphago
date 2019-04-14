@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.cpp
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/MCTS.cpp
+MCTS.h
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/MCTS.h
+
+/media/psf/Home/Documents/GitHub/mini-alphago/c-version/MCTS.h
 chessboard.h
 /media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.h
+assert.h
+-
+math.h
+-
 
 /media/psf/Home/Documents/GitHub/mini-alphago/c-version/chessboard.h
 iostream

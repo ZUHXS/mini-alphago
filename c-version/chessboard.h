@@ -24,6 +24,7 @@ private:
     uint_fast64_t board_color;
     uint_fast64_t board_occupied;
     bool is_end;
+
 public:
     Chessboard();
     Chessboard(Chessboard *init);

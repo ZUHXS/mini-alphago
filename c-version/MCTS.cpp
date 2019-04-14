@@ -5,6 +5,7 @@
 #include "MCTS.h"
 
 MCTS *MCTS::root_node = nullptr;
+int MCTS::node_counting = 0;
 //bool MCTS::win_expectation = 0;
 
 MCTS::MCTS(Chessboard *init) {   // for the root node
@@ -18,6 +19,9 @@ MCTS::MCTS(Chessboard *init) {   // for the root node
     this->siblings = nullptr;
     this->if_end = 0;
     root_node = this;
+
+    this->current_node_counting = MCTS::node_counting;
+    MCTS::node_counting++;
 }
 
 MCTS::MCTS(MCTS *init, int x, int y) {
@@ -39,6 +43,9 @@ MCTS::MCTS(MCTS *init, int x, int y) {
     this->height = init->get_height() + 1;
     this->prev_x = x;
     this->prev_y = y;
+
+    this->current_node_counting = MCTS::node_counting;
+    MCTS::node_counting++;
 }
 
 int MCTS::get_height() {
@@ -57,6 +64,7 @@ bool MCTS::make_children() {
         int x = solutions.back();
         solutions.pop_back();
         auto child = new MCTS(this, x, y);
+        cout << "create children under " << this->current_node_counting << " with x " << x << " y " << y << " with index " << child->current_node_counting << endl;
         if (previous) {   // init siblings
             previous->set_siblings(child);
         }
@@ -130,9 +138,10 @@ void MCTS::do_MCTS() {
         cout << countings << endl;
         while (temp->first_children != NULL) {
             temp = temp->select_ucb();
+            cout << "UCB selected index " << temp->current_node_counting << endl;
         }
         temp->make_children();
-        if (temp->if_end) {   // check end when make children
+        if (temp->if_end) {   // check end when making children
             int situation = this->chessboard.check_win();
             if (get_win_condition()) {  // we want black to win, if it is a tie, we consider we win
                 if (situation == 1 || situation == 2) {
@@ -149,12 +158,15 @@ void MCTS::do_MCTS() {
             }
         }
         temp = temp->first_children;
+        cout << "selected index " << temp->current_node_counting << " to do stimulation" << endl;
         bool victory = temp->make_stimulate();
         victory = !static_cast<bool>((victory) ^ (win_condition));
         //bool victory = ~(temp->make_stimulate() ^ win_condition);
         temp->back_propagate(victory);
+        cout << "stimulation result " << victory << endl;
+        temp = root_node;
     }
-    temp = root_node;
+
     cout << "the conditions are " << temp->sti_times << " " << temp->win_times << endl;
 
 }

@@ -11,7 +11,7 @@
 
 #define C 2
 #define INFINITY 100000
-#define MAXCOUNTING 60
+#define MAXCOUNTING 20
 
 
 class MCTS {
@@ -28,7 +28,9 @@ private:
     int best_y;
     int prev_x;
     int prev_y;
+    int current_node_counting;
     static MCTS *root_node;
+    static int node_counting;
     //static bool win_expectation;  // if we want black to win, 1, else 0
 public:
     MCTS(Chessboard *init);   // init for father points
