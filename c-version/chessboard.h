@@ -14,7 +14,19 @@ using namespace std;
 #define NEWBOARDOCCUPIED 0x0000001818000000
 #define MAX_INT64 0xFFFFFFFFFFFFFFFF
 
-#define STIMULATE_RANDOM 5
+#define SIMULATE_RANDOM 5
+
+
+const int g_Weight[8][8] = {
+        {100, 1, 50, 30, 30, 50, 1, 100},
+        {1, 1, 30, 10, 10, 30, 1, 1},
+        {50, 30, 20, 10, 10, 20, 30, 50},
+        {30, 10, 20,  0, 0, 20, 10, 30},
+        {30, 10, 20,  0, 0, 20, 10, 30},
+        {50, 30, 20, 10, 10, 20, 30, 50},
+        {1, 1, 30, 10, 10, 30, 1, 1},
+        {100, 1, 50, 30, 30, 50, 1, 100}
+};
 
 //#define DEBUG  // make some assertions
 
@@ -48,8 +60,8 @@ public:
     uint_fast64_t get_board_color() const;    // get board color, MCTS use
     uint_fast64_t get_board_occupied() const;  // get board bitmap, MCTS use
     int check_win() const;    // if tie, return 2, if black wins, return 1, if white wins, return 0
-    void stimulate_move();    // stimulate the value and select a move
-    bool stimulate();         // for MCTS use, stimulate the moving, if black wins, return 1, else return 0
+    void simulate_move();    // stimulate the value and select a move
+    bool simulate();         // for MCTS use, stimulate the moving, if black wins, return 1, else return 0
     int next_posible_moves(int x, int y);   // after making move at (x, y), check the number of possible solutions
     bool get_is_end();
 };

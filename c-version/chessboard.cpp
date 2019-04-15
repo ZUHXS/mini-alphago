@@ -250,7 +250,7 @@ int Chessboard::check_win() const {
     }
 }
 
-void Chessboard::stimulate_move() {
+void Chessboard::simulate_move() {
     vector<char> solutions;
     this->get_possible_solutions(solutions);
 
@@ -265,8 +265,8 @@ void Chessboard::stimulate_move() {
         solutions.pop_back();
         int x = solutions.back();
         solutions.pop_back();
-        int number = this->next_posible_moves(x, y) + rand() % STIMULATE_RANDOM;
-        //int number = rand() % STIMULATE_RANDOM;
+        int number = this->next_posible_moves(x, y) + rand() % SIMULATE_RANDOM;
+        //int number = rand() % SIMULATE_RANDOM;
         if (number < final_number) {
             final_number = number;
             final_x = x;
@@ -308,7 +308,7 @@ int Chessboard::get_possible_solutions() const {
     return number;
 }
 
-bool Chessboard::stimulate() {
+bool Chessboard::simulate() {
     auto temp_chessboard = new Chessboard(this);
     int number = 0;
     while (1) {
@@ -316,7 +316,7 @@ bool Chessboard::stimulate() {
         if (temp_chessboard->is_end) {  // end of the game
             break;
         }
-        temp_chessboard->stimulate_move();
+        temp_chessboard->simulate_move();
     }
     bool win_situation = temp_chessboard->check_win();
     delete temp_chessboard;

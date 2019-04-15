@@ -20,7 +20,7 @@ private:
     MCTS *parent;   // father
     MCTS *first_children;
     MCTS *siblings;   // a chain connection all siblings
-    int sti_times;
+    int sim_times;
     int win_times;
     int height;    // the height of the node, probability calculation use
     int if_end;    // if it is the end of the game
@@ -39,7 +39,7 @@ public:
     void set_siblings(MCTS *sibling);
     float get_ucb(int total_N);
     MCTS *select_ucb();
-    bool make_stimulate();
+    bool make_simulate();
     bool get_prev_xy(int &x, int &y);
     bool get_win_condition();   // if we want black to win, return 1, else return 0
 
