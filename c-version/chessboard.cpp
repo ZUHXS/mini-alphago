@@ -237,7 +237,7 @@ bool Chessboard::get_current_color() const {
 int Chessboard::check_win() const {
     int black = this->black_num();
     int white = this->white_num();
-    cout << black << " " << white << endl;
+    //cout << black << " " << white << endl;
     if (white > black) {
         return 0;
     }
@@ -245,7 +245,7 @@ int Chessboard::check_win() const {
         return 1;
     }
     else {
-        cout << "tie " << black << " " << white << endl;
+        //cout << "tie " << black << " " << white << endl;
         return 2;
     }
 }
@@ -258,27 +258,35 @@ void Chessboard::simulate_move() {
 
     int flag = 0;
     int final_x, final_y;
-    int final_number = 100;
+    int final_number = -2000;
     while (!solutions.empty()) {
         flag = 1;
         int y = solutions.back();
         solutions.pop_back();
         int x = solutions.back();
         solutions.pop_back();
-        int number = this->next_posible_moves(x, y) + rand() % SIMULATE_RANDOM;
-        //int number = rand() % SIMULATE_RANDOM;
-        if (number < final_number) {
+        /*
+        int number;
+        if (this->current_color == 0) {
+            number = this->step_value(x, y) + rand() % SIMULATE_RANDOM2;
+        }
+        else {
+            number = rand() % SIMULATE_RANDOM1;
+        }
+         */
+        int number = this->step_value(x, y) + rand() % SIMULATE_RANDOM2;
+        //int number = rand() % SIMULATE_RANDOM1;
+        if (number > final_number) {
             final_number = number;
             final_x = x;
             final_y = y;
         }
     }    // here, final_x, final_y is our next move
-    if (flag == 0) {
+    if (flag== 0) {
         final_x = -1;
         final_y = -1;
     }
     this->make_move(final_x, final_y);
-    int total_number = this->white_num() + this->black_num();
 }
 
 int Chessboard::next_posible_moves(int x, int y) {
@@ -329,4 +337,27 @@ bool Chessboard::check_end() {
 
 bool Chessboard::get_is_end() {
     return this->is_end;
+}
+
+auto Chessboard::step_value(int x, int y) -> const int {
+    int value = g_Weight[x][y];
+
+    // save the value
+    int color = this->current_color;
+    uint_fast64_t old_board_occupied = this->board_occupied;
+    uint_fast64_t old_board_color = this->board_color;
+
+    this->make_move(x, y);
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (this->if_movable(i, j)) {
+                value -= g_Weight[i][j];
+            }
+        }
+    }
+    // reset the state information
+    this->current_color = color;
+    this->board_occupied = old_board_occupied;
+    this->board_color = old_board_color;
+    return value;
 }

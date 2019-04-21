@@ -13,8 +13,10 @@ using namespace std;
 #define NEWBOARDCOLOR 0x0000000810000000
 #define NEWBOARDOCCUPIED 0x0000001818000000
 #define MAX_INT64 0xFFFFFFFFFFFFFFFF
+#define INFINITY 100000
 
-#define SIMULATE_RANDOM 5
+#define SIMULATE_RANDOM1 8
+#define SIMULATE_RANDOM2 100
 
 
 const int g_Weight[8][8] = {
@@ -45,7 +47,7 @@ public:
     int white_num() const;   // return the number of white chess
     void get_possible_solutions(vector <char> &solutions) const;   // fill the vector with x1, y1, x2, y2, if no possible solutions, return empty vector
     int get_possible_solutions() const;   // return the number of the solutions
-    bool make_move(int x, int y);    // make move at (x, y)
+    auto make_move(int x, int y) -> bool;    // make move at (x, y)
     bool if_movable(int x, int y) const;   // check if (x, y) is a legal move in current chessboard
     void get_next_position(int &x, int &y, int direction) const;
     bool if_possible_place(int x, int y) const;   // check if (x, y) is within the chessboard
@@ -64,6 +66,7 @@ public:
     bool simulate();         // for MCTS use, stimulate the moving, if black wins, return 1, else return 0
     int next_posible_moves(int x, int y);   // after making move at (x, y), check the number of possible solutions
     bool get_is_end();
+    auto step_value(int x, int y) -> const int;
 };
 
 

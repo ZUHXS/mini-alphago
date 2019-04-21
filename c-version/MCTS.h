@@ -11,7 +11,7 @@
 
 #define C 2
 #define INFINITY 100000
-#define MAXCOUNTING 20
+#define MAXCOUNTING 2000
 
 
 class MCTS {
@@ -44,8 +44,9 @@ public:
     bool get_win_condition();   // if we want black to win, return 1, else return 0
 
     bool make_children();    // if it is the leaf node, then create children
-    void do_MCTS();
+    void do_MCTS(int &best_x, int &best_y);
     void back_propagate(bool victory);
+    void change_root(int x1, int y1, int x2, int y2);
 
 };
 

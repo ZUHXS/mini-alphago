@@ -6,7 +6,6 @@
 
 MCTS *MCTS::root_node = nullptr;
 int MCTS::node_counting = 0;
-//bool MCTS::win_expectation = 0;
 
 MCTS::MCTS(Chessboard *init) {   // for the root node
     this->chessboard.set_bitmap(init->get_board_color(), init->get_board_occupied());
@@ -59,12 +58,12 @@ bool MCTS::make_children() {
     MCTS *previous = nullptr;
     while (!solutions.empty()) {
         flag = 1;
-        int y = solutions.back();
+        auto y = solutions.back();
         solutions.pop_back();
-        int x = solutions.back();
+        auto x = solutions.back();
         solutions.pop_back();
         auto child = new MCTS(this, x, y);
-        cout << "create children under " << this->current_node_counting << " with x " << x << " y " << y << " with index " << child->current_node_counting << endl;
+        //cout << "create children under " << this->current_node_counting << " with x " << (int)x << " y " << (int)y << " with index " << child->current_node_counting << endl;
         if (previous) {   // init siblings
             previous->set_siblings(child);
         }
@@ -75,8 +74,12 @@ bool MCTS::make_children() {
     }
     if (!flag) {
         auto child = new MCTS(this, -1, -1);   // does not have a possible move
+        //cout << "debug 2" << endl;
         if (!child->chessboard.get_possible_solutions()) {   // the opponent still can't make a move
+            this->first_children = nullptr;
+            delete child;
             this->if_end = 1;
+            //cout << "debug 3" << endl;
         }
         else {
             this->first_children = child;
@@ -91,12 +94,17 @@ void MCTS::set_siblings(MCTS *sibling) {
 
 float MCTS::get_ucb(int total_N) {
     if (this->sim_times == 0) {
-        cout << "index " <<  this->current_node_counting << " has ucb " << (this->height % 2 ? 1000 : -1) << endl;
-        return this->height % 2 ? 1000 : -1;
+        //cout << "index " <<  this->current_node_counting << " has ucb " << (this->height % 2 ? 1000 : -1) << endl;
+        return 1000;
     }
     else {
-        cout << "index " <<  this->current_node_counting << " has ucb " << (float) ((double)this->win_times / (double)this->sim_times + sqrt(log(total_N) * C / (float)this->sim_times)) << endl;
-        return (float) ((double)this->win_times / (double)this->sim_times + sqrt(log(total_N) * C / (float)this->sim_times));
+        if (this->height % 2) {  // black move
+            return (float) ((double)this->win_times / (double)this->sim_times + sqrt(log(total_N) * C / (double)this->sim_times));
+        }
+        else {
+            return (float) (1 - ((double) this->win_times / (double) this->sim_times) +
+                            sqrt(log(total_N) * C / (double) this->sim_times));
+        }
     }
 }
 
@@ -104,28 +112,20 @@ MCTS* MCTS::select_ucb() {
     auto best = this->first_children;
     auto p = this->first_children;
     int total_N = this->sim_times;
-    float best_ucb_1 = -1;
-    float best_ucb_2 = INFINITY;
+    float best_ucb = -1;
     while (p != NULL) {
         float ucb = p->get_ucb(total_N);
-        if (p->height % 2) {
-            if (ucb > best_ucb_1) {
-                best_ucb_1 = ucb;
-                best = p;
-            }
-        } else {
-            if (ucb < best_ucb_2) {
-                best_ucb_2 = ucb;
-                best = p;
-            }
+        if (ucb > best_ucb) {
+            best_ucb = ucb;
+            best = p;
         }
         p = p->siblings;
     }
-    cout << "selected node No. " <<  best->current_node_counting << endl;
+    //cout << "selected node No. " <<  best->current_node_counting << endl;
     return best;
 }
 
-void MCTS::do_MCTS() {
+void MCTS::do_MCTS(int &best_x, int &best_y) {
 #ifdef DEBUG
     if (MCTS::root_node != this) {
         printf("root node not match!\n");
@@ -141,37 +141,61 @@ void MCTS::do_MCTS() {
         cout << countings << endl;
         while (temp->first_children != NULL) {
             temp = temp->select_ucb();
-            cout << "UCB selected index " << temp->current_node_counting << endl;
+            //cout << "UCB selected index " << temp->current_node_counting << endl;
         }
         temp->make_children();
+        if (countings == 4239)
+            cout << "debug 4" << endl;
+
         if (temp->if_end) {   // check end when making children
-            int situation = this->chessboard.check_win();
-            if (get_win_condition()) {  // we want black to win, if it is a tie, we consider we win
-                if (situation == 1 || situation == 2) {
-                    back_propagate(1);
-                } else {
-                    back_propagate(0);
-                }
+
+            bool situation = temp->chessboard.check_win();
+            //cout << "debug 1" << endl;
+            if (win_condition) {  // we want black to win, if it is a tie, we consider we win
+                temp->back_propagate(situation);
             } else {
-                if (situation == 0 || situation == 2) {
-                    back_propagate(1);
-                } else {
-                    back_propagate(0);
-                }
+                temp->back_propagate(!situation);
             }
+            temp = root_node;
         }
-        temp = temp->first_children;
-        cout << "selected index " << temp->current_node_counting << " to do simulation" << endl;
-        bool victory = temp->make_simulate();
-        victory = !static_cast<bool>((victory) ^ (win_condition));
-        //bool victory = ~(temp->make_simulate() ^ win_condition);
-        temp->back_propagate(victory);
-        cout << "simulation result " << victory << endl;
-        temp = root_node;
+        else {
+            temp = temp->first_children;
+            //cout << "selected index " << temp->current_node_counting << " to do simulation" << endl;
+            bool victory = temp->make_simulate();
+            if (win_condition) {
+                temp->back_propagate(victory);
+            }
+            else {
+                temp->back_propagate(!victory);
+            }
+            //cout << "simulation result " << victory << endl;
+            temp = root_node;
+        }
     }
 
-    cout << "the conditions are " << temp->sim_times << " " << temp->win_times << endl;
 
+    cout << "the conditions are " << temp->sim_times << " " << temp->win_times << endl;
+    // output the result
+    temp = root_node;
+    temp = temp->first_children;
+    int temp_x = -1;
+    int temp_y = -1;
+    double best_prob = -1;
+    while(temp) {
+        double temp_prob = (double)temp->win_times / (double)temp->sim_times;
+        cout << "with x = " << temp->prev_x << " y = " << temp->prev_y << " the conditions are " << temp_prob << endl;
+        if (temp_prob > best_prob) {
+            temp_x = temp->prev_x;
+            temp_y = temp->prev_y;
+            best_prob = temp_prob;
+        }
+        temp = temp->siblings;
+    }
+    if (temp_x == -1 || temp_y == -1) {
+        cout << "an error occured in MCTS" << endl;
+    }
+    best_x = temp_x;
+    best_y = temp_y;
 }
 
 
@@ -197,4 +221,39 @@ bool MCTS::get_prev_xy(int &x, int &y) {
 
 bool MCTS::get_win_condition() {
     return root_node->chessboard.get_current_color();
+}
+
+void MCTS::change_root(int x1, int y1, int x2, int y2) {
+    auto temp = root_node;
+    temp = temp->first_children;
+    int find_flag = 0;
+    while(temp != nullptr) {
+        if (temp->prev_x == x1 && temp->prev_y == y1) {
+            find_flag = 1;
+            break;
+        }
+        temp = temp->siblings;
+    }
+    if (!find_flag) {
+        cout << "an error occured when changing the root1" << endl;
+        exit(1);
+    }
+    temp = temp->first_children;
+    find_flag = 0;
+    while (temp != nullptr) {
+        if (temp->prev_x == x2 && temp->prev_y == y2) {
+            find_flag = 1;
+            break;
+        }
+        temp = temp->siblings;
+    }
+    if (!find_flag) {
+        cout << "an error occured when changing the root2" << endl;
+        exit(1);
+    }
+
+
+    else {
+        root_node = temp;
+    }
 }
